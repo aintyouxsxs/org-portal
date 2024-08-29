@@ -1,0 +1,795 @@
+*{
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+	font-family: sans-serif;	
+	}
+
+html{
+	scroll-behavior: smooth;
+}
+
+.cover {
+    background-color: rgb(43, 38, 64);
+    position: fixed;
+    width: 100%;
+    z-index: 999;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-bottom: 2px solid #6737ec;
+    height: 82px;
+}
+
+.nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    width: 100%;
+}
+
+.logo img{
+	width: 50px;
+}
+
+.logo a {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+    text-decoration: none;
+	gap: 15px;
+	font-size: 20px;
+	font-weight: 600;
+    color: #fff;
+	letter-spacing: 2px;
+}
+
+.navigation {
+    display: flex;
+    align-items: center;
+}
+
+.navigation a, .access {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    font-size: 1.1em;
+    color: #fff;
+    text-decoration: none;
+    font-weight: 500;
+    margin-left: 40px;
+    padding-inline: 10px;
+    padding: 12px 16px;
+    background-color: rgb(43, 38, 64);
+    border: none;
+    letter-spacing: 1px;
+}
+
+.navigation a:hover {
+    background-color: rgb(12, 3, 36);
+    color: #fff;
+    transition: 0.1s;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+.access {
+    padding: 14px 20px;
+    color: #fff;
+    border-radius: 10px;
+    background: linear-gradient(90deg, rgb(78, 16, 255) 0%, rgb(171, 23, 223) 100%);
+    font-size: 18px;
+    border: none;
+    font-weight: 600;
+}
+
+.access:hover {
+    background: rgb(57, 57, 233);
+    cursor: pointer;
+    transition: .2s;
+}
+
+#accessButton {
+    display: inline-flex;
+}
+
+#loggedInIcon {
+	position: relative;
+    font-size: 24px;
+    color: #fff;
+    display: none; /* Initially hidden */
+    align-items: center;
+    margin-left: 40px;
+	display: flex;
+}
+
+#loggedInIcon img{
+	height: 50px;
+	width: 50px;
+	border-radius: 50%;
+}
+
+#loggedInIcon i{
+	margin-inline-start: 0.8rem;
+	color: #b8b6b6;
+	font-size: 14px;
+}
+
+#profileButton {
+    background: none;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+}
+
+#loggedInIcon button{
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	padding: 14px 20px;
+	background-color: rgb(43, 38, 64);
+	border: none;
+	cursor: pointer;
+}
+
+.dropdown-menu {
+    display: none; /* Hide dropdown by default */
+    position: absolute;
+    top: 95%; /* Position below the button */
+    left: -20px; /* Align to the right */
+	background-color: rgb(43, 38, 64); /* Background color of the dropdown */
+    border: 1px solid #ddd; /* Border for the dropdown */
+    box-shadow: 0px 8px 16px rgba(0,0,0,0.2); /* Shadow effect */
+    border-radius: 4px; /* Rounded corners */
+    z-index: 1000; /* Ensure dropdown appears on top */
+    min-width: 260px; /* Minimum width of the dropdown */
+	padding: 20px;
+}
+
+.dropdownMenu p{
+	font-size: 18px;
+	font-weight: 500;
+}
+
+.logout i{
+	margin-inline-end: .9rem;
+	color: #ffff;
+}
+
+.dropdown-menu .logout{
+	padding: 10px 40px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	border: 1px solid #fff;
+    border-radius: 8px;
+	text-align: center;
+}
+
+.dropdown-menu .logout:hover{
+	transition: 1;
+	border: 2px solid #fff;
+}
+
+.dropdown-menu a {
+	display: inline-flex;
+	margin-inline-start: 0;
+    display: block;
+    padding: 15px 10px;
+    text-decoration: none;
+    font-size: 16px;
+	color: #fff;
+    margin-top: 15px;
+}
+
+.dropdown-menu a:hover {
+    background-color: rgb(12, 3, 36);
+	color: #ffffff; /* Background color on hover */
+}
+
+
+/*-------------------------------------------------- modal -------------------------------------------*/
+
+.blur-background {
+    filter: blur(5px);
+    transition: filter 0.3s ease-in-out;
+}
+
+/* Modal Styles */
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1000; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* Black with opacity */
+}
+
+.modal-content {
+	color: #fff;
+	background-color: rgb(12, 3, 36);
+    margin: 12% auto; /* 15% from the top and centered */
+    padding: 50px;
+    width: 80%; /* Could be more or less, depending on screen size */
+    max-width: 800px;
+    z-index: 1001; /* Ensure it is above the background blur */
+}
+
+.mods{
+	display: grid;
+	grid-template-columns: repeat(2, minmax(0px, 1fr));
+	gap: 20px;
+}
+
+.content{
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	height: 100%;
+}
+
+.content img{
+	width: 150px;
+	height: 150px;
+}
+
+.regs{
+	display: flex;
+	flex-direction: column;
+	padding-left: 40px;
+	height: 100%;
+	border-left: 1px solid rgb(61, 61, 61);
+	box-sizing: border-box;
+}
+
+.regs p{
+	font-size: 18px;
+}
+
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+form label {
+    display: block;
+	padding-top: 20px;
+    margin-bottom: 8px;
+}
+
+form input {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+form button {
+	margin-top: 10px;
+    width: 100%;
+    padding: 10px;
+	background: linear-gradient(90deg, rgb(78, 16, 255) 0%, rgb(171, 23, 223) 100%);
+    color: white;
+    border: none;
+	font-weight: 600;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+form button:hover {
+    background-color: #5729c1;
+}
+
+form p{
+	margin-top: 15px;
+}
+
+form p a{
+	text-decoration: none;
+	color: #6737ec;
+}
+
+.name-container {
+    display: flex;
+    gap: 20px; /* Space between fields */
+}
+
+/* Flex item for each name field */
+.name-field {
+    flex: 1; /* Allows each field to take equal space */
+}
+
+.name-field label {
+    display: block;
+    margin-bottom: 8px;
+}
+
+.name-field input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+/*-------------------------------------------------- slide 1 -------------------------------------------*/
+
+
+
+#header1 {
+    position: relative;
+    overflow: hidden;
+    max-width: 100%;
+    height: 720px; /* Adjust height if necessary */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: rgba(0, 0, 0, 0.5); /* Ensure background color is transparent */
+}
+
+#backgroundVideo {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: -1; /* Ensure the video is behind other content */
+}
+
+.cover1 {
+    position: relative;
+    max-width: 1368px;
+    text-align: center;
+    color: white; /* Adjust text color if needed for readability */
+    z-index: 1; /* Ensure text is above the video */
+}
+
+.container {
+    padding: 20px;
+}
+
+.container h1 {
+    font-size: 50px;
+    font-weight: 600;
+    line-height: 68px;
+}
+
+.container p {
+    font-size: 24px;
+    line-height: 34px;
+}
+
+.access1 {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    gap: 20px;
+    margin-top: 40px;
+}
+
+.join {
+    background: linear-gradient(90deg, rgb(78, 16, 255) 0%, rgb(171, 23, 223) 100%);
+    border: none;
+    padding: 12px 30px;
+    font-size: 20px;
+    border-radius: 10px;
+    color: #fff;
+}
+
+.join a {
+    text-decoration: none;
+    color: #fff;
+}
+
+.join:hover {
+    background: rgb(57, 57, 233);
+    cursor: pointer;
+    transition: .5s;
+}
+
+
+/*-------------------------------------------------- slide 2 -------------------------------------------*/
+
+#header2{
+    background-color: rgb(12, 3, 36);
+	display: flex;
+	align-items: center;
+	justify-content: center;
+    max-width: 100%;
+}
+
+.cover2{
+    max-width: 1368px;
+    padding-top: 50px;
+    margin: 0 auto; /* Centers the container */
+    width: 100%; /* Ensures it takes up full width up to 1200px */
+}
+
+.container2 {
+	color: #fff;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center; /* Align items vertically */
+}
+
+.container2-list {
+    flex: 1 1 300px; /* Flex items to wrap and take up at least 300px */
+	width: 20px;
+    box-sizing: border-box; /* Ensure padding and borders are included in the width */
+}
+
+.container2-list img {
+    height: 550px;
+    width: 600px; /* Ensure the image doesn't exceed its container's width */ /* Maintain the image's aspect ratio */
+}
+
+
+.container2-info{
+	font-size: 38px;
+}
+
+.container2-p{
+	padding: 30px 0;
+	font-size: 18px;
+	line-height: 25px;
+}
+
+.button2{
+	width: 40%;
+    padding: 13px 20px;
+	background: linear-gradient(90deg, rgb(78, 16, 255) 0%, rgb(171, 23, 223) 100%);
+    color: white;
+    border: none;
+	font-weight: 600;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.button2 a{
+	text-decoration: none;
+	color: #fff;
+}
+
+.button2:hover{
+	background: rgb(57, 57, 233);
+	cursor: pointer;
+	transition: .5s
+}
+
+.password-field {
+    position: relative;
+}
+
+.password-field i {
+    position: absolute;
+    right: 15px;
+    top: 35%;
+    transform: translateY(-50%);
+    cursor: pointer;
+    color: rgb(12, 3, 36);
+}
+
+
+/*-------------------------------------------------- slide 3 -------------------------------------------*/
+
+#header3{
+    background-color: rgb(12, 3, 36);
+	display: flex;
+	align-items: center;
+	justify-content: center;
+    max-width: 100%;
+}
+
+.cover3{
+    max-width: 1368px;
+    padding-top: 80px;
+    margin: 0 auto; /* Centers the container */
+    width: 100%; /* Ensures it takes up full width up to 1200px */
+}
+
+.container3{
+	color: #fff;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center; /* Align items vertically */
+}
+
+.container3-list {
+    flex: 1 1 300px; /* Flex items to wrap and take up at least 300px */
+    box-sizing: border-box; /* Ensure padding and borders are included in the width */
+}
+
+.container3-list img {
+    height: 550px;
+    width: 600px; /* Maintain the image's aspect ratio */
+}
+
+
+.container3-info{
+	font-size: 38px;
+}
+
+.container3-p{
+	padding: 30px 0;
+	font-size: 18px;
+	line-height: 25px;
+}
+
+.button3{
+	width: 40%;
+    padding: 13px 20px;
+	background: linear-gradient(90deg, rgb(78, 16, 255) 0%, rgb(171, 23, 223) 100%);
+    color: white;
+    border: none;
+	font-weight: 600;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.button3 a{
+	text-decoration: none;
+	color: #fff;
+}
+
+.button3:hover{
+	background: rgb(57, 57, 233);
+	cursor: pointer;
+	transition: .5s
+}
+
+/*-------------------------------------------------- slide 4 -------------------------------------------*/
+
+#header4{
+    background-color: rgb(12, 3, 36);
+	display: flex;
+	align-items: center;
+	justify-content: center;
+    max-width: 100%;
+}
+
+.cover4{
+    max-width: 1368px;
+    padding-top: 80px;
+    padding-bottom: 120px;
+    margin: 0 auto; /* Centers the container */
+    width: 100%; /* Ensures it takes up full width up to 1200px */
+}
+
+.container4{
+	color: #fff;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center; /* Align items vertically */
+}
+
+.container4-list {
+    flex: 1 1 300px; /* Flex items to wrap and take up at least 300px */
+    box-sizing: border-box; /* Ensure padding and borders are included in the width */
+}
+
+.container4-list img {
+    height: 550px;
+    width: 600px; /* Maintain the image's aspect ratio */
+}
+
+
+.container4-info{
+	font-size: 38px;
+}
+
+.container4-p{
+	padding: 30px 0;
+	font-size: 18px;
+	line-height: 25px;
+}
+
+.button4{
+	width: 40%;
+    padding: 13px 20px;
+	background: linear-gradient(90deg, rgb(78, 16, 255) 0%, rgb(171, 23, 223) 100%);
+    color: white;
+    border: none;
+	font-weight: 600;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.button4 a{
+	text-decoration: none;
+	color: #fff;
+}
+
+.button40:hover{
+	background: rgb(57, 57, 233);
+	cursor: pointer;
+	transition: .5s
+}
+
+
+#header5{
+    background-image: linear-gradient(186deg, rgb(202, 116, 122) -1.27%, rgb(145, 47, 212) 43.1%, rgb(76, 40, 140) 90.16%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    max-width: 100%;
+}
+
+    .cover5{
+    max-width: 1368px;
+    padding: 80px;
+    margin: 0 auto; /* Centers the container */
+    width: 100%; /* Ensures it takes up full width up to 1200px */
+}
+
+.container5{
+    max-width: 100%; /* Make sure it doesn’t exceed parent */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.container5 h2, .container5 p {
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    text-align: center;
+}
+
+.container5 h2{
+    font-size: 28px;
+    color: #fff;
+    margin-bottom: 48px;
+    font-weight: 700;
+}
+
+.container5 p{
+    color: #fff;
+    font-size: 18px;
+    margin-top: 60px;
+}
+
+
+.oppu{
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 26px;
+}
+
+.oppu-list{
+    max-width: 280px;  /* Set a max-width to prevent overflow */
+    flex: 1;           /* Allow flexbox to manage space distribution */
+    margin: 0 10px;    /* Add some spacing between items */
+    padding: 28px 24px;
+    background-color: #ffffff;
+    border-radius: 16px;
+    text-align: center;
+}
+
+.oppu-list strong{
+    font-size: 18px;
+    font-weight: 600px;
+}
+
+.oppu-list ul{
+    list-style-type: none;
+    margin-top: 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    
+}
+
+.oppu-list ul li{
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    gap: 16px;
+    font-size: 13px;
+}
+
+#footer{
+    background-color: rgb(43, 38, 64);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    max-width: 100%;
+}
+
+.last{
+    max-width: 1368px;
+    padding-top: 80px;
+    margin: 0 auto; /* Centers the container */
+    width: 100%; /* Ensures it takes up full width up to 1200px */
+}
+
+.container-last{
+    max-width: 100%; /* Make sure it doesn’t exceed parent */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.container-last h2{
+    color: #fff;
+    font-size: 20px;
+    letter-spacing: 2px;
+}
+
+.socials{
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    margin-top: 50px;
+    gap: 50px;
+}
+
+.social-image img{
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+}
+
+.web-logo{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-top: 40px;
+    padding-bottom: 50px;
+}
+
+.web-logo img{
+    height: 100px;
+}
+
+.web-logo p{
+    font-size: 40px;
+    font-weight: 700;
+    color: #fff;
+    letter-spacing: 4px;
+}
+
+/* General container for error messages */
+.error-message {
+    background-color: #f8d7da; /* Light red background */
+    color: #721c24; /* Dark red text color */
+    border: 1px solid #f5c6cb; /* Light red border */
+    padding: 3px;
+    margin-top: 10px;
+    border-radius: 5px;
+    font-size: 14px;
+}
+
+/* Optional styling for specific error types */
+.error-message.info {
+    background-color: #d1ecf1; /* Light blue background */
+    color: #0c5460; /* Dark blue text color */
+    border: 1px solid #bee5eb; /* Light blue border */
+}
+
+.error-message.warning {
+    background-color: #fff3cd; /* Light yellow background */
+    color: #856404; /* Dark yellow text color */
+    border: 1px solid #ffeeba; /* Light yellow border */
+}
+

@@ -1,0 +1,525 @@
+*{
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+	font-family: sans-serif;	
+	}
+
+html{
+	scroll-behavior: smooth;
+}
+
+.cover {
+    background-color: rgb(43, 38, 64);
+    position: fixed;
+    width: 100%;
+    z-index: 999;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-bottom: 2px solid #6737ec;
+    height: 82px;
+    }
+
+.nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    width: 100%;
+}
+
+.logo img{
+	width: 50px;
+}
+
+.logo a {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+    text-decoration: none;
+	gap: 15px;
+	font-size: 20px;
+	font-weight: 600;
+    color: #fff;
+	letter-spacing: 2px;
+}
+
+.navigation {
+    display: flex;
+    align-items: center;
+}
+
+.navigation a, .access {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    font-size: 1.1em;
+    color: #fff;
+    text-decoration: none;
+    font-weight: 500;
+    margin-left: 40px;
+    padding-inline: 10px;
+    padding: 12px 16px;
+    background-color: rgb(43, 38, 64);
+    border: none;
+    letter-spacing: 1px;
+}
+
+.navigation a:hover {
+    background-color: rgb(12, 3, 36);
+    color: #fff;
+    transition: 0.1s;
+    border-radius: 8px;
+    cursor: pointer;
+}
+.image-container {
+    width: 100%;
+    height: 100vh; /* Full viewport height */
+    overflow: hidden;
+}
+
+.image-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Cover the container, might crop the image */
+}
+
+.access {
+    padding: 14px 20px;
+    color: #fff;
+    border-radius: 10px;
+    background: linear-gradient(90deg, rgb(78, 16, 255) 0%, rgb(171, 23, 223) 100%);
+    font-size: 18px;
+    border: none;
+    font-weight: 600;
+}
+
+.access:hover {
+    background: rgb(57, 57, 233);
+    cursor: pointer;
+    transition: .2s;
+}
+
+#accessButton {
+    display: inline-flex;
+}
+
+#loggedInIcon {
+	position: relative;
+    font-size: 24px;
+    color: #fff;
+    display: none; /* Initially hidden */
+    align-items: center;
+    margin-left: 40px;
+	display: flex;
+}
+
+#loggedInIcon img{
+	height: 50px;
+	width: 50px;
+	border-radius: 50%;
+}
+
+#loggedInIcon i{
+	margin-inline-start: 0.8rem;
+	color: #b8b6b6;
+	font-size: 14px;
+}
+
+#profileButton {
+    background: none;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+}
+
+#loggedInIcon button{
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	padding: 14px 20px;
+	background-color: rgb(43, 38, 64);
+	border: none;
+	cursor: pointer;
+}
+
+.dropdown-menu {
+    display: none; /* Hide dropdown by default */
+    position: absolute;
+    top: 95%; /* Position below the button */
+    left: -20px; /* Align to the right */
+	background-color: rgb(43, 38, 64); /* Background color of the dropdown */
+    border: 1px solid #ddd; /* Border for the dropdown */
+    box-shadow: 0px 8px 16px rgba(0,0,0,0.2); /* Shadow effect */
+    border-radius: 4px; /* Rounded corners */
+    z-index: 1000; /* Ensure dropdown appears on top */
+    min-width: 260px; /* Minimum width of the dropdown */
+	padding: 20px;
+}
+
+.dropdownMenu p{
+	font-size: 18px;
+	font-weight: 500;
+}
+
+.logout i{
+	margin-inline-end: .9rem;
+	color: #ffff;
+}
+
+.dropdown-menu .logout{
+	padding: 10px 40px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	border: 1px solid #fff;
+    border-radius: 8px;
+	text-align: center;
+}
+
+.dropdown-menu .logout:hover{
+	transition: 1;
+	border: 2px solid #fff;
+}
+
+.dropdown-menu a {
+	display: inline-flex;
+	margin-inline-start: 0;
+    display: block;
+    padding: 15px 10px;
+    text-decoration: none;
+    font-size: 16px;
+	color: #fff;
+    margin-top: 15px;
+}
+
+.dropdown-menu a:hover {
+    background-color: rgb(12, 3, 36);
+	color: #ffffff; /* Background color on hover */
+}
+
+/*-------------------------------------------------- modal -------------------------------------------*/
+
+.blur-background {
+    filter: blur(5px);
+    transition: filter 0.3s ease-in-out;
+}
+
+/* Modal Styles */
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1000; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* Black with opacity */
+}
+
+.modal-content {
+	color: #fff;
+	background-color: rgb(12, 3, 36);
+    margin: 12% auto; /* 15% from the top and centered */
+    padding: 50px;
+    width: 80%; /* Could be more or less, depending on screen size */
+    max-width: 800px;
+    z-index: 1001; /* Ensure it is above the background blur */
+}
+
+.mods{
+	display: grid;
+	grid-template-columns: repeat(2, minmax(0px, 1fr));
+	gap: 20px;
+}
+
+.content{
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	height: 100%;
+}
+
+.content img{
+	width: 150px;
+	height: 150px;
+}
+
+.regs{
+	display: flex;
+	flex-direction: column;
+	padding-left: 40px;
+	height: 100%;
+	border-left: 1px solid rgb(61, 61, 61);
+	box-sizing: border-box;
+}
+
+.regs p{
+	font-size: 18px;
+}
+
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+form label {
+    display: block;
+	padding-top: 20px;
+    margin-bottom: 8px;
+}
+
+form input {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+form button {
+	margin-top: 10px;
+    width: 100%;
+    padding: 10px;
+	background: linear-gradient(90deg, rgb(78, 16, 255) 0%, rgb(171, 23, 223) 100%);
+    color: white;
+    border: none;
+	font-weight: 600;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+form button:hover {
+    background-color: #5729c1;
+}
+
+form p{
+	margin-top: 15px;
+}
+
+form p a{
+	text-decoration: none;
+	color: #6737ec;
+}
+
+.name-container {
+    display: flex;
+    gap: 20px; /* Space between fields */
+}
+
+/* Flex item for each name field */
+.name-field {
+    flex: 1; /* Allows each field to take equal space */
+}
+
+.name-field label {
+    display: block;
+    margin-bottom: 8px;
+}
+
+.name-field input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.image-container{
+    max-width: 100%;
+    height: 600px;
+}
+
+.info1 {
+    background-color: rgb(12, 3, 36);
+    height: auto;
+    }
+
+.info-box{
+    max-width: 1348px;
+    width: 100%;
+    text-align: center;
+    padding: 50px 0;
+    color: #fff;
+    margin: 0 auto;
+}
+
+.info-about{
+    background-color: rgb(43 ,38, 64);
+    padding: 20px;
+    border-radius: 20px;
+    border: 2px solid #6737ec;
+}
+
+.info-box h1{
+    margin: 40px;
+    letter-spacing: 2px;
+}
+
+.info-box p{
+    letter-spacing: 2px;
+    line-height: 1.5;
+    margin-bottom: 40px;
+    font-size: 16px;
+}
+
+
+
+
+.info2 {
+    background-color: rgb(12, 3, 36);
+    height: auto;
+    }
+
+.info-box2{
+    max-width: 1348px;
+    width: 100%;
+    padding: 50px 0;
+    color: #fff;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 50px;
+}
+
+.info-list2{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    background-color: rgb(43 ,38, 64);
+    padding: 20px;
+    border-radius: 20px;
+    border: 2px solid #6737ec;
+    height: 200px;
+}
+
+.info-list2 h2{
+    margin: 30px;
+    letter-spacing: 2px;
+}
+
+.info-list2 p{
+    letter-spacing: 2px;
+    line-height: 1.5;
+    margin-bottom: 40px;
+    font-size: 16px;
+    text-align: center;
+    font-style: oblique;
+}
+
+
+.dev-ops{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    background-color: rgb(12, 3, 36);
+}
+
+.img-container{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 50px;
+}
+
+.img-container img{
+    margin: 50px;
+    width: 180px;
+    height: 180px;
+    border-radius: 50%;
+}
+
+.img-container img:hover{
+    transform: scale(1.1);
+    cursor: pointer;
+    transition: .8s;
+}
+
+.img-container h3{
+    color: #fff;
+    text-align: center;
+    font-size: 22px;
+}
+
+.img-container p{
+    color: #fff;
+    text-align: center;
+    font-size: 15px
+}
+
+#footer{
+    background-color: rgb(43, 38, 64);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    max-width: 100%;
+}
+
+.last{
+    max-width: 1368px;
+    padding-top: 80px;
+    margin: 0 auto; /* Centers the container */
+    width: 100%; /* Ensures it takes up full width up to 1200px */
+}
+
+.container-last{
+    max-width: 100%; /* Make sure it doesn’t exceed parent */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.container-last h2{
+    color: #fff;
+    font-size: 20px;
+    letter-spacing: 2px;
+}
+
+.socials{
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    margin-top: 50px;
+    gap: 50px;
+}
+
+.social-image img{
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+}
+
+.web-logo{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-top: 40px;
+    padding-bottom: 50px;
+}
+
+.web-logo img{
+    height: 100px;
+}
+
+.web-logo p{
+    font-size: 40px;
+    font-weight: 700;
+    color: #fff;
+    letter-spacing: 4px;
+}

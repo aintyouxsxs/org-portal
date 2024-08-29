@@ -1,0 +1,331 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: sans-serif;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+.cover {
+    background-color: rgb(43, 38, 64);
+    position: fixed;
+    width: 100vw;
+    z-index: 999;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-bottom: 2px solid #6737ec;
+    height: 82px;
+}
+
+.nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    width: 100%;
+}
+
+.logo img {
+    width: 50px;
+}
+
+.logo a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    gap: 15px;
+    font-size: 20px;
+    font-weight: 600;
+    color: #fff;
+    letter-spacing: 2px;
+}
+
+.navigation {
+    display: flex;
+    align-items: center;
+}
+
+.navigation a, .access {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    font-size: 1.1em;
+    color: #fff;
+    text-decoration: none;
+    font-weight: 500;
+    margin-left: 40px;
+    padding-inline: 10px;
+    padding: 12px 16px;
+    background-color: rgb(43, 38, 64);
+    border: none;
+    letter-spacing: 1px;
+}
+
+.navigation a:hover {
+    background-color: rgb(12, 3, 36);
+    color: #fff;
+    transition: 0.1s;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+.access {
+    padding: 14px 20px;
+    color: #fff;
+    border-radius: 10px;
+    background: linear-gradient(90deg, rgb(78, 16, 255) 0%, rgb(171, 23, 223) 100%);
+    font-size: 18px;
+    border: none;
+    font-weight: 600;
+}
+
+.access:hover {
+    background: rgb(57, 57, 233);
+    cursor: pointer;
+    transition: .2s;
+}
+
+#accessButton {
+    display: inline-flex;
+}
+
+#loggedInIcon {
+    position: relative;
+    font-size: 24px;
+    color: #fff;
+    display: none; /* Initially hidden */
+    align-items: center;
+    margin-left: 40px;
+    display: flex;
+}
+
+#loggedInIcon img {
+    height: 50px;
+    width: 50px;
+    border-radius: 50%;
+}
+
+#loggedInIcon i {
+    margin-inline-start: 0.8rem;
+    color: #b8b6b6;
+    font-size: 14px;
+}
+
+#profileButton {
+    background: none;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+}
+
+#loggedInIcon button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 14px 20px;
+    background-color: rgb(43, 38, 64);
+    border: none;
+    cursor: pointer;
+}
+
+.dropdown-menu {
+    display: none; /* Hide dropdown by default */
+    position: absolute;
+    top: 95%; /* Position below the button */
+    left: -20px; /* Align to the right */
+    background-color: rgb(43, 38, 64); /* Background color of the dropdown */
+    border: 1px solid #ddd; /* Border for the dropdown */
+    box-shadow: 0px 8px 16px rgba(0,0,0,0.2); /* Shadow effect */
+    border-radius: 4px; /* Rounded corners */
+    z-index: 1000; /* Ensure dropdown appears on top */
+    min-width: 260px; /* Minimum width of the dropdown */
+    padding: 20px;
+}
+
+.dropdown-menu p {
+    font-size: 18px;
+    font-weight: 500;
+}
+
+.logout i {
+    margin-inline-end: .9rem;
+    color: #ffff;
+}
+
+.dropdown-menu .logout {
+    padding: 10px 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid #fff;
+    border-radius: 8px;
+    text-align: center;
+}
+
+.dropdown-menu .logout:hover {
+    transition: 1s;
+    border: 2px solid #fff;
+}
+
+.dropdown-menu a {
+    margin-inline-start: 0;
+    display: block;
+    margin-top: 20px;
+    text-decoration: none;
+    font-size: 16px;
+    color: #fff;
+}
+
+.dropdown-menu a:hover {
+    background-color: rgb(12, 3, 36);
+    color: #ffffff; /* Background color on hover */
+}
+
+#dashboard {
+    background-color: rgb(12, 3, 36);
+    min-height: 100vh; /* Ensure it takes the full viewport height */
+    padding-top: 120px; /* Offset by the header height */
+}
+
+.profile {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    gap: 50px;
+}
+
+.container1 {
+    position: sticky;
+    width: 30%;
+    max-width: 280px;
+    max-height: 500px;
+    height: 100%;
+}
+
+.user-settings {
+    display: flex;
+    flex-direction: column;
+    background-color: rgb(17, 4, 52);
+    padding: 30px;
+    gap: 160px;
+    border-radius: 10px;
+    box-shadow: rgba(70, 70, 70, 0.25) 0px 4px 24px 0px;
+    border: 1px solid rgba(255, 255, 255, 0.24);
+}
+
+.user-settings .logout {
+    text-decoration: none;
+    text-align: center;
+    background-color: transparent;
+    border: 1px solid rgba(255, 255, 255, 0.87);
+    padding: 10px;
+    border-radius: 10px;
+    color: #ffffffd3;
+    font-size: 18px;
+    cursor: pointer;
+}
+
+.user-settings button:hover {
+    color: #fff;
+}
+
+.settings {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+}
+
+.user {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 16px;
+}
+
+.fa-angle-right {
+    margin-left: auto;
+}
+
+.settings a {
+    text-decoration: none;
+    color: #fff;
+    font-size: 16px;
+    letter-spacing: 2px;
+}
+
+.container2 {
+    display: flex;
+    flex-direction: column;
+}
+
+.user-info {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    gap: 20px;
+    background-color: rgb(17, 4, 52);
+    padding: 40px 20px 40px 20px;
+    border-radius: 10px;
+    box-shadow: rgba(70, 70, 70, 0.25) 0px 4px 24px 0px;
+    border: 1px solid rgba(255, 255, 255, 0.24);
+    color: #fff;
+    width: 800px;
+}
+
+form {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+
+form label {
+    font-size: 20px;
+    font-weight: 600;
+    padding-bottom: 5px;
+    padding-top: 50px;
+}
+
+form input {
+    background-color: transparent;
+    border-radius: 8px;
+    padding: 10px;
+    font-size: 18px;
+    border: 2px solid rgb(43, 38, 64);
+    color: #fff;
+}
+
+form textarea {
+    background-color: transparent;
+    border-radius: 8px;
+    padding: 10px;
+    font-size: 18px;
+    border: 2px solid rgb(43, 38, 64);
+    color: #fff;
+}
+
+form .desc {
+    height: 100px;
+}
+
+.submits button {
+    margin-top: 20px;
+    padding: 10px 30px;
+    border-radius: 8px;
+    cursor: pointer;
+    border: none;
+    background: linear-gradient(90deg, rgb(78, 16, 255) 0%, rgb(171, 23, 223) 100%);
+    color: #fff;
+    font-size: 15px;
+}
+
+.submits button:hover {
+    background: rgb(57, 57, 233);
+    transition: .2s;
+}
