@@ -143,7 +143,7 @@ if (isset($_SESSION['loggedin']) && $_SESSION['loggedin']) {
                         </a>
                     </div>
                     <div class="navigation">
-                        <a href=".php">Home</a>
+                        <a href="home.php">Home</a>
                         <a href="community.php">Community</a>
                         <a href="event.php">Events</a>
                         <a href="about.php">About</a>
